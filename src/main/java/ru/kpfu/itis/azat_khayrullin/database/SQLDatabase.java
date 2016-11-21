@@ -6,9 +6,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-/**
- * Created by soffietto on 12.11.16.
- */
 public class SQLDatabase {
     private final static String DRIVER = "org.postgresql.Driver";
     private final static String CONNECTION_URI = "jdbc:postgresql://localhost:5432/shop";

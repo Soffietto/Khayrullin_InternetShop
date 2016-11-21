@@ -1,6 +1,6 @@
 package ru.kpfu.itis.azat_khayrullin.servlets;
 
-import ru.kpfu.itis.azat_khayrullin.database.SQLHelper;
+import ru.kpfu.itis.azat_khayrullin.database.UserDAO;
 import ru.kpfu.itis.azat_khayrullin.exception.DBException;
 import ru.kpfu.itis.azat_khayrullin.models.User;
 
@@ -17,7 +17,7 @@ public class Login extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         User user = (User) req.getSession().getAttribute("user");
         if(user != null)
-            resp.sendRedirect("/mypage");
+            resp.sendRedirect("/main");
         else
             req.getRequestDispatcher("/jsp/login.jsp").forward(req,resp);
     }
@@ -33,7 +33,11 @@ public class Login extends HttpServlet {
                 User user = getUser(email, password);
                 if (user != null) {
                     req.getSession().setAttribute("user", user);
-                    resp.sendRedirect("/mypage");
+                    if(user.getEmail().equals("admin") && user.getPassword().equals("admin")){
+                        resp.sendRedirect("/admin");
+                    }else {
+                        resp.sendRedirect("/main");
+                    }
                 } else {
                     req.setAttribute("wrong", "User not found");
                     doGet(req, resp);
@@ -47,7 +51,7 @@ public class Login extends HttpServlet {
     }
 
     private User getUser(String email, String password) throws DBException {
-        SQLHelper repository = new SQLHelper();
+        UserDAO repository = new UserDAO();
         return repository.findByEmail(email, password);
     }
 }

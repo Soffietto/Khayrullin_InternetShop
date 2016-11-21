@@ -9,10 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-/**
- * Created by soffietto on 12.11.16.
- */
-public class SQLHelper {
+public class UserDAO {
 
     public boolean addUser(User user) throws DBException, AlreadyExistException {
         Connection conn = SQLDatabase.getConnection();
@@ -30,6 +27,8 @@ public class SQLHelper {
                 e.printStackTrace();
                 throw new DBException();
             }
+        }else {
+            throw new AlreadyExistException();
         }
         return false;
     }

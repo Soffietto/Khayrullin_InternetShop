@@ -1,16 +1,20 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: soffietto
-  Date: 12.11.16
-  Time: 16:07
-  To change this template use File | Settings | File Templates.
---%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <html>
 <head>
     <title>Registration</title>
+    <link rel="stylesheet" href="<c:url value="/css/main.css"/>">
 </head>
 <body>
+<div class="header">
+    <div class="mainText"><h2>BGLand shop</h2></div>
+    <div class="signInSignUp">
+        <a class="signIn" href="/main">To main</a>
+        <a class="signIn" href="/login">Sign In</a>
+    </div>
+</div>
+<div class="products">
     <h1>Create new account!</h1>
 
     <form action="" method="post">
@@ -37,5 +41,6 @@
 
         <input name="btn" type="submit" value="Create Account">
     </form>
+</div>
 </body>
 </html>

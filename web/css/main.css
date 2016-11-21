@@ -1,7 +1,87 @@
 body {
-    font-family: 'Open Sans', sans-serif;
-    color: #6a859c;
-    font-size: 16px;
-    line-height: 20px;
-    background-size: cover;
+    background-color: rgb(237, 238,240);
+    margin: 0;
+}
+.header {
+    background-color: rgb(80, 114, 153);
+    position: relative;
+    height: 7%;
+}
+.mainText{
+    color: white;
+    position: absolute;
+    left: 22%;
+    font-family: Arial, sans-serif;
+}
+.signIn{
+    font-family: Arial, sans-serif;
+    font-size: 20px;
+    color: white;
+    padding-right: 1%;
+    margin-top: 0;
+    margin-bottom: 0;
+    text-decoration: none;
+}
+
+.signInSignUp{
+    position: relative;
+    padding-top: 1%;
+    text-decoration: none;
+    left: 60%;
+}
+.products{
+    position: relative;
+    margin-left: 20%;
+    margin-right: 20%;
+    background-color: white;
+}
+
+.user{
+    position: relative;
+    padding-top: 2px;
+    left: 60%;
+}
+
+.logout{
+    position: absolute;
+    left: 70%;
+    top: 30%;
+    padding-left: 0;
+    color: white;
+    background-color: rgb(80, 114, 153);
+}
+
+.logout:hover{
+    color: chocolate;
+}
+
+.welcome {
+    top: 30%;
+    color: white;
+    position: relative;
+    left: 50%;
+    font-family: Arial, sans-serif;
+}
+
+.backTo{
+    top: 32%;
+    position: absolute;
+    left: 62%;
+    padding-left: 0;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+.backToText{
+    font-family: Arial, sans-serif;
+    font-size: 20px;
+    color: white;
+    margin-top: 0;
+    margin-bottom: 0;
+    text-decoration: none;
+}
+
+.description{
+    height: 10%;
+    width: 40%;
 }

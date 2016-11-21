@@ -1,7 +1,7 @@
 package ru.kpfu.itis.azat_khayrullin.servlets;
 
 import ru.kpfu.itis.azat_khayrullin.Service.RegularTester;
-import ru.kpfu.itis.azat_khayrullin.database.SQLHelper;
+import ru.kpfu.itis.azat_khayrullin.database.UserDAO;
 import ru.kpfu.itis.azat_khayrullin.exception.AlreadyExistException;
 import ru.kpfu.itis.azat_khayrullin.exception.DBException;
 import ru.kpfu.itis.azat_khayrullin.models.User;
@@ -29,7 +29,7 @@ public class Registration extends HttpServlet {
         HttpSession session = req.getSession();
         User user = (User) session.getAttribute("user");
         if(user != null){
-            resp.sendRedirect("/mypage");
+            resp.sendRedirect("/main");
         }else {
             fillEnteredInformation(req);
             req.getRequestDispatcher("/jsp/register.jsp").forward(req,resp);
@@ -85,7 +85,7 @@ public class Registration extends HttpServlet {
                 e.printStackTrace();
                 doGet(req, resp);
             } catch (AlreadyExistException e) {
-                e.printStackTrace();
+                showError(req, "email", "This email already used");
                 doGet(req, resp);
             }
         }else {
@@ -106,7 +106,7 @@ public class Registration extends HttpServlet {
     }
 
     private void addUser(HttpServletRequest req) throws DBException, AlreadyExistException {
-        SQLHelper base = new SQLHelper();
+        UserDAO base = new UserDAO();
         User user = new User(secondName + " " + firstName, email, password, phoneNumber, addres);
         base.addUser(user);
         req.getSession().setAttribute("user",user);
