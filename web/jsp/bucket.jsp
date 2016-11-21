@@ -17,12 +17,13 @@
             Cost: ${item.getCost()}$<br>
             Description: ${item.getDescription()}</p>
         <form action="/removebucket" method="post">
-            <button name="button" type="submit" value="${item.getName()}">Delete</button>
+            <button name="button" type="submit" value="${item.getName()}" onclick="return confirm('Are you sure you want to delete ${item.getName()} from your bucket&')">Delete</button>
         </form>
         <hr>
     </c:forEach>
     <c:choose>
         <c:when test="${!bucket.isEmpty()}">
+            <h3>Total cost: ${cost}$</h3>
             <form action="/thankyou" method="post"><input type="submit" value="Buy"></form>
         </c:when>
         <c:otherwise>

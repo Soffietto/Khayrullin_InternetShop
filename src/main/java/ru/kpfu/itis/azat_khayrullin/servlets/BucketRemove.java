@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.util.List;
 
 import static ru.kpfu.itis.azat_khayrullin.servlets.Bucket.bucket;
+import static ru.kpfu.itis.azat_khayrullin.servlets.Bucket.cost;
 import static ru.kpfu.itis.azat_khayrullin.servlets.Bucket.productDAO;
 
 @WebServlet("/removebucket")
@@ -38,6 +39,8 @@ public class BucketRemove extends HttpServlet {
             }
             bucket.remove(index);
             req.setAttribute("bucket",bucket);
+            cost -= product.getCost();
+            req.setAttribute("cost",cost);
             resp.sendRedirect("/bucket");
         } catch (DBException e) {
             e.printStackTrace();

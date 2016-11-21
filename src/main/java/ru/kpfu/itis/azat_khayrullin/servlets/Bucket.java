@@ -19,6 +19,7 @@ import java.util.List;
 public class Bucket extends HttpServlet {
     static List<Product> bucket= new LinkedList<Product>();
     static ProductDAO productDAO = new ProductDAO();
+    static int cost;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -28,6 +29,7 @@ public class Bucket extends HttpServlet {
             resp.sendRedirect("/main");
         } else {
             req.setAttribute("bucket",bucket);
+            req.setAttribute("cost", cost);
             req.getRequestDispatcher("/jsp/bucket.jsp").forward(req, resp);
         }
     }
@@ -38,6 +40,8 @@ public class Bucket extends HttpServlet {
         try {
             bucket.add(productDAO.findByName(buttonValue));
             req.setAttribute("bucket",bucket);
+            cost += productDAO.findByName(buttonValue).getCost();
+            req.setAttribute("cost", cost);
             resp.sendRedirect("/main");
         } catch (DBException e) {
             e.printStackTrace();

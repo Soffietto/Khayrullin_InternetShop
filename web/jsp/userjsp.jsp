@@ -17,7 +17,7 @@
             Cost: ${item.getCost()}$<br>
             Description: ${item.getDescription()}</p>
             <form action="/bucket" method="post">
-                <button name="button" value="${item.getName()}" onclick="alert('Added to bucket!')">
+                <button name="button" value="${item.getName()}" onclick="alert('${item.getName()} added to bucket!')">
                     Add to bucket!
                 </button>
             </form>

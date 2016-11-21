@@ -17,7 +17,7 @@
             Cost: ${item.getCost()}$<br>
             Description: ${item.getDescription()}</p>
         <form action="/admin" method="post">
-            <button name="button" type="submit" value="${item.getName()}">Delete</button>
+            <button name="button" type="submit" value="${item.getName()}" onclick="return confirm('Are you sure you want to delete ${item.getName()} from the shop?')">Delete</button>
         </form>
         <hr>
     </c:forEach>
