@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.util.List;
 
 import static ru.kpfu.itis.azat_khayrullin.servlets.Bucket.bucket;
+import static ru.kpfu.itis.azat_khayrullin.servlets.Bucket.cost;
 
 public class WelcomeList extends HttpServlet {
 
@@ -44,6 +45,7 @@ public class WelcomeList extends HttpServlet {
         HttpSession session= req.getSession();
         session.invalidate();
         bucket.clear();
+        cost=0;
         resp.sendRedirect("/main");
     }
 }
